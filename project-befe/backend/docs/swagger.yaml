@@ -1,0 +1,281 @@
+basePath: /api/v1
+definitions:
+  main.Boardgames:
+    properties:
+      category:
+        type: string
+      cover_image:
+        type: string
+      created_at:
+        type: string
+      creater:
+        type: string
+      description:
+        type: string
+      discount:
+        type: integer
+      id:
+        type: integer
+      is_new:
+        type: boolean
+      language:
+        type: string
+      max_players:
+        type: integer
+      min_players:
+        type: integer
+      original_price:
+        description: ฟิลด์ใหม่
+        type: number
+      price:
+        type: number
+      publisher:
+        type: string
+      rating:
+        type: number
+      reviews_count:
+        type: integer
+      stock:
+        type: integer
+      title:
+        type: string
+      updated_at:
+        type: string
+      year:
+        type: integer
+    type: object
+  main.ErrorResponse:
+    properties:
+      message:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a simple example of using Gin with Swagger.
+  title: Simple API Example
+  version: "1.0"
+paths:
+  /boardgames:
+    get:
+      description: Get all boardgames
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Boardgames'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Get all boardgames
+      tags:
+      - BoardGame
+    post:
+      consumes:
+      - application/json
+      description: Add a new boardgame to the database
+      parameters:
+      - description: Boadgames details
+        in: body
+        name: boardgame
+        required: true
+        schema:
+          $ref: '#/definitions/main.Boardgames'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/main.Boardgames'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Create a new boardgame
+      tags:
+      - BoardGame
+  /boardgames/{id}:
+    delete:
+      description: Remove a board game from the database by ID
+      parameters:
+      - description: BoardGame ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Delete a board game
+      tags:
+      - BoardGame
+    get:
+      description: Get detail of getDetail of Boardgame
+      parameters:
+      - description: Boardgame ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Boardgames'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Get Boardgame by Id
+      tags:
+      - BoardGame
+    put:
+      consumes:
+      - application/json
+      description: Update a book’s details using its ID
+      parameters:
+      - description: BoardGame ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated BoardGame details
+        in: body
+        name: Boardgame
+        required: true
+        schema:
+          $ref: '#/definitions/main.Boardgames'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Boardgames'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Update an existing boardgame
+      tags:
+      - BoardGame
+  /boardgames/discounted:
+    get:
+      description: Get board games with discount > 0
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Boardgames'
+            type: array
+      summary: Get discounted board games
+      tags:
+      - BoardGame
+  /boardgames/featured:
+    get:
+      description: Get board games with rating >= 4.5
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Boardgames'
+            type: array
+      summary: Get featured board games
+      tags:
+      - BoardGame
+  /boardgames/new:
+    get:
+      description: Get most recently added board games
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Boardgames'
+            type: array
+      summary: Get newly added board games
+      tags:
+      - BoardGame
+  /boardgames/search:
+    get:
+      description: Search board games by title or creator
+      parameters:
+      - description: Keyword to search (title or creator)
+        in: query
+        name: q
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Boardgames'
+            type: array
+      summary: Search board games
+      tags:
+      - BoardGame
+  /categories:
+    get:
+      description: Return a list of unique categories from board_games
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: Get all unique board game categories
+      tags:
+      - Categories
+swagger: "2.0"
