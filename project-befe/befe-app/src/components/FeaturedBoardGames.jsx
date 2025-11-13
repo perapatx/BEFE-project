@@ -1,31 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import BookCard from './BookCard';
+import GameCard from './GameCard';
 
-const NewBooks = () => {
+const FeaturedBoardGames = () => {
   // กำหนด State สำหรับจัดการข้อมูล
-  const [newBooks, setNewBooks] = useState([]);
+  const [featuredGames, setFeaturedGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchNewBooks = async () => {
+    const fetchGames = async () => {
       try {
         setLoading(true);
         
-        // เรียก API เพื่อดึงข้อมูลหนังสือใหม่
-        const response = await fetch('http://localhost:8080/api/v1/books/new');
+        // เรียก API เพื่อดึงข้อมูลบอร์ดเกมทั้งหมด
+        const response = await fetch('http://localhost:8080/api/v1/boardgames');
 
         if (!response.ok) {
-          throw new Error('Failed to fetch new books');
+          throw new Error('Failed to fetch board games');
         }
 
         const data = await response.json();
-        setNewBooks(data);
+
+        // สุ่มบอร์ดเกม 5 เกมมาเป็น "แนะนำ"
+        const shuffled = [...data].sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 5);
+
+        setFeaturedGames(selected);
         setError(null);
         
       } catch (err) {
         setError(err.message);
-        console.error('Error fetching new books:', err);
+        console.error('Error fetching board games:', err);
         
       } finally {
         setLoading(false);
@@ -33,15 +38,15 @@ const NewBooks = () => {
     };
 
     // เรียกใช้ฟังก์ชันดึงข้อมูล
-    fetchNewBooks();
+    fetchGames();
   }, []); // [] = dependency array ว่าง = รันครั้งเดียว
 
   // กรณีกำลังโหลดข้อมูล
   if (loading) {
     return (
       <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-        <div className="text-center py-8 col-span-full">
-          Loading new arrivals...
+        <div className="text-center py-8 col-span-full text-gray-600">
+          กำลังโหลดบอร์ดเกมแนะนำ...
         </div>
       </div>
     );
@@ -61,14 +66,14 @@ const NewBooks = () => {
   // กรณีแสดงผลข้อมูลปกติ
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-      {newBooks.map(book => (
-        <BookCard 
-          key={book.id} 
-          book={book} 
+      {featuredGames.map((game) => (
+        <GameCard 
+          key={game.id} 
+          game={game} 
         />
       ))}
     </div>
   );
 };
 
-export default NewBooks;
+export default FeaturedBoardGames;

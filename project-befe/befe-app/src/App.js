@@ -8,7 +8,7 @@ import NotFound from './components/NotFound';
 
 // Pages
 import HomePage from './pages/HomePage';
-import BookListPage from './pages/BookListPage';
+// import BookListPage from './pages/BoardGameListPage';
 import BookDetailPage from './pages/BookDetailPage';
 import CategoryPage from './pages/CategoryPage';
 import AboutPage from './pages/AboutPage';
@@ -39,7 +39,7 @@ function App() {
         {/* ✅ Routes ที่มี Navbar/Footer */}
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/books" element={<BookListPage />} />
+          {/* <Route path="/boardgame" element={<BoardGameListPage />} /> */}
           <Route path="/books/:id" element={<BookDetailPage />} />
           <Route path="/categories" element={<CategoryPage />} />
           <Route path="/categories/:category" element={<CategoryPage />} />

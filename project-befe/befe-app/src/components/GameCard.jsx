@@ -3,7 +3,7 @@ import { HeartIcon, ShoppingCartIcon, StarIcon } from '@heroicons/react/outline'
 import { HeartIcon as HeartSolidIcon, StarIcon as StarSolidIcon } from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 
-const BookCard = ({ book }) => {
+const GameCard = ({ book }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
 
@@ -134,4 +134,4 @@ const BookCard = ({ book }) => {
   );
 };
 
-export default BookCard;
+export default GameCard;
