@@ -36,8 +36,8 @@ function App() {
       <Routes>
         {/* {/ ✅ Routes ที่ไม่มี Navbar/Footer /} */}
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/store-manager/add-book" element={<AddBookPage />} />
-        <Route path='/store-manager/booklist' element={<BooklistAdmin/>}/>
+        <Route path="/store-manager/add-BoardGame" element={<AddBoardGamePage />} />
+        <Route path='/store-manager/booklist' element={<BoardgamelistAdmin/>}/>
         {/* {/ ✅ Routes ที่มี Navbar/Footer /} */}
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
