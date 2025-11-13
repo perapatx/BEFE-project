@@ -10,6 +10,7 @@ import NotFound from './components/NotFound';
 import HomePage from './pages/HomePage';
 // import BookListPage from './pages/BoardGameListPage';
 import BookDetailPage from './pages/BookDetailPage';
+import BoardGameListPage from './pages/BoardGameListPage';
 import CategoryPage from './pages/CategoryPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
@@ -40,7 +41,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           {/* <Route path="/boardgame" element={<BoardGameListPage />} /> */}
-          <Route path="/books/:id" element={<BookDetailPage />} />
+          <Route path="/boardgames/:id" element={<BoardGameListPage />} />
           <Route path="/categories" element={<CategoryPage />} />
           <Route path="/categories/:category" element={<CategoryPage />} />
           <Route path="/about" element={<AboutPage />} />
