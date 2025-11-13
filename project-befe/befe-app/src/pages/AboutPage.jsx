@@ -2,11 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const AboutPage = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
   const store = {
-    description:
-      "ร้านบอร์ดเกมครบวงจรสำหรับทุกคนที่รักการเล่นเกม เรามีทั้งเกมวางแผน เกมครอบครัว และเกมปาร์ตี้ให้เลือกมากมาย พร้อมทีมงานที่รักในบอร์ดเกมไม่แพ้คุณ!",
+    description: "ร้านบอร์ดเกมครบวงจรสำหรับทุกคนที่รักการเล่นเกม เรามีทั้งเกมวางแผน เกมครอบครัว และเกมปาร์ตี้ให้เลือกมากมาย พร้อมทีมงานที่รักในบอร์ดเกมไม่แพ้คุณ!",
     staff: [
       {
         name: "หมอกเม็ด",
@@ -35,11 +34,9 @@ const AboutPage = () => {
     <div className="min-h-screen bg-red-50 text-gray-800">
 
       {/* Hero Section */}
-      <section className="text-center pt-6 pb-12 bg-gradient-to-b from-red-600 to-red-400 text-white">
-        <h2 className="text-5xl font-bold mb-4 drop-shadow-md">เกี่ยวกับเรา</h2>
-        <p className="max-w-3xl mx-auto text-lg leading-relaxed">
-          {store.description}
-        </p>
+      <section className="text-center py-12 bg-gradient-to-b from-red-600 to-red-400 text-white">
+        <h1 className="text-4xl font-bold mb-2">เกี่ยวกับเรา</h1>
+        <p className="text-lg">{store.description}</p>
       </section>
 
       {/* Staff Section */}
