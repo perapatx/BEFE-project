@@ -1,0 +1,68 @@
+version: '3.9'
+
+services:
+  db:
+    build: ./project-befe/bgdatabase/docker
+    container_name: bgdatabase
+    environment:
+      POSTGRES_DB: boardgames
+      POSTGRES_USER: boardgames_user
+      POSTGRES_PASSWORD: mysecure123pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U boardgames_user -d boardgames"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: boardgames@hotmail.com
+      PGADMIN_DEFAULT_PASSWORD: boardgames123
+    ports:
+      - "5050:80"
+    networks:
+      - app-network
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  backend:
+    build: ./project-befe/backend
+    container_name: backend
+    env_file:
+      - ./project-befe/backend/.env
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./project-befe/befe-app
+    container_name: befe-app
+    ports:
+      - "3000:80"
+    networks:
+      - app-network
+    environment:
+      - REACT_APP_API_URL=http://backend:8080
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
+    driver: bridge
