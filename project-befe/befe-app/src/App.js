@@ -9,13 +9,15 @@ import NotFound from './components/NotFound';
 // Pages
 import HomePage from './pages/HomePage';
 import BoardGameListPage from './pages/BoardGameListPage';
-import BookDetailPage from './pages/BookDetailPage';
+import BoardGameDetailPage from './pages/BoardGameDetailPage';
 import CategoryPage from './pages/CategoryPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import LoginPage from './pages/LoginPage';
 import AddBookPage from './pages/AddBookPage';
 import BooklistAdmin from './pages/BooklistAdmin';
+import CartPage from './pages/CartPage';
+
 function Layout() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -40,11 +42,12 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
            <Route path="/games" element={<BoardGameListPage />} /> 
-          <Route path="/games/:id" element={<BookDetailPage />} />
+          <Route path="/games/:id" element={<BoardGameDetailPage />} />
           <Route path="/categories" element={<CategoryPage />} />
           <Route path="/categories/:category" element={<CategoryPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/cartpage" element={<CartPage />} />
           <Route path="" element={<NotFound />} />
         </Route>
       </Routes>

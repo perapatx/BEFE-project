@@ -37,10 +37,9 @@ const Navbar = () => {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `font-medium transition-colors ${
-                    isActive
-                      ? 'text-yellow-300 border-b-2 border-yellow-300'
-                      : 'hover:text-yellow-200'
+                  `font-medium transition-colors ${isActive
+                    ? 'text-yellow-300 border-b-2 border-yellow-300'
+                    : 'hover:text-yellow-200'
                   }`
                 }
               >
@@ -51,23 +50,16 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="flex items-center space-x-4">
-            {/* <button className="p-2 hover:text-yellow-200 transition-colors">
-              <SearchIcon className="h-6 w-6" />
-            </button> */}
 
-            <button className="relative p-2 hover:text-yellow-200 transition-colors">
+            <Link to="/cartpage" className="relative p-2 hover:text-yellow-200 transition-colors">
               <ShoppingCartIcon className="h-6 w-6" />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs 
-                  rounded-full h-5 w-5 flex items-center justify-center font-semibold">
+        rounded-full h-5 w-5 flex items-center justify-center font-semibold">
                   {cartCount}
                 </span>
               )}
-            </button>
-
-            {/* <button className="p-2 hover:text-yellow-200 transition-colors">
-              <UserIcon className="h-6 w-6" />
-            </button> */}
+            </Link>
 
             {/* Mobile Menu Toggle */}
             <button
@@ -85,9 +77,8 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-          }`}
+          className={`lg:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+            }`}
         >
           <div className="py-4 border-t border-red-400 bg-red-700">
             {[
@@ -98,8 +89,8 @@ const Navbar = () => {
               { to: '/contact', label: 'ติดต่อ' },
             ].map((item) => (
               <NavLink
-                key={item.to}
-                to={item.to}
+                key="/cartpage"
+                to="/cartpage"
                 className="block py-2 px-2 hover:text-yellow-200 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
