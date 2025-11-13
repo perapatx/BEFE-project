@@ -44,8 +44,6 @@ const ContactPage = () => {
         <h1 className="text-4xl font-bold mb-2">ติดต่อเรา</h1>
         <p className="text-lg">มีคำถาม? ต้องการความช่วยเหลือ? เราพร้อมให้บริการคุณ</p>
       </section>
-
-      {/*  เนื้อหาหลัก */}
 {/* เนื้อหาหลัก */}
 <div className="container mx-auto px-4 py-12">
   <div className="max-w-6xl mx-auto">
