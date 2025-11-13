@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react';  
 import { useNavigate } from 'react-router-dom';
 import { LockClosedIcon, UserIcon } from '@heroicons/react/outline';
 
@@ -13,8 +13,8 @@ const LoginPage = () => {
     setError('');
 
     // Validate credentials
-    if (username === 'bookstoreadmin' && password === 'ManageBook68') {
-      // Store authentication token/flag
+    if (username === 'boardgameadmin' && password === 'mysecure123pass') {
+    // Store authentication token/flag
       localStorage.setItem('isAdminAuthenticated', 'true');
       navigate('/store-manager/booklist');
     } else {
@@ -23,28 +23,29 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-viridian-600 to-green-700 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-red-400 via-red-500 to-red-400 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
-        <div>
-          <div className="mx-auto h-16 w-16 bg-white rounded-full flex items-center justify-center">
-            <LockClosedIcon className="h-10 w-10 text-viridian-600" />
+
+        {/* Header */}
+        <div className="text-center">
+          <div className="mx-auto h-16 w-16 bg-white rounded-full flex items-center justify-center shadow-md">
+            <span className="text-4xl">🔐</span>
           </div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
-            เข้าสู่ระบบ BackOffice
-          </h2>
-          <p className="mt-2 text-center text-sm text-viridian-100">
-            สำหรับผู้ดูแลระบบเท่านั้น
-          </p>
+          <h2 className="mt-6 text-3xl font-extrabold text-white">เข้าสู่ระบบ <p>BoardgameAdmin</p></h2>
+          <p className="mt-2 text-sm text-red-100">สำหรับผู้ดูแลระบบเท่านั้น</p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-2xl p-8">
+        {/* Login Form */}
+        <div className="bg-white rounded-2xl shadow-2xl p-8">
           <form className="space-y-6" onSubmit={handleSubmit}>
+
             {error && (
               <div className="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
                 {error}
               </div>
             )}
 
+            {/* Username */}
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
                 ชื่อผู้ใช้
@@ -68,6 +69,7 @@ const LoginPage = () => {
               </div>
             </div>
 
+            {/* Password */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                 รหัสผ่าน
@@ -91,13 +93,13 @@ const LoginPage = () => {
               </div>
             </div>
 
+            {/* Submit Button */}
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-3 px-4 border border-transparent
-                  rounded-lg shadow-sm text-sm font-medium text-white bg-viridian-600
-                  hover:bg-viridian-700 focus:outline-none focus:ring-2 focus:ring-offset-2
-                  focus:ring-viridian-500 transition-colors duration-200"
+                className="w-full py-3 px-4 bg-red-600 text-white font-semibold rounded-lg shadow-md
+                  hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500
+                  transition-colors duration-200"
               >
                 เข้าสู่ระบบ
               </button>
@@ -105,11 +107,13 @@ const LoginPage = () => {
           </form>
         </div>
 
+        {/* Footer */}
         <div className="text-center">
-          <a href="/" className="text-sm text-white hover:text-viridian-100 transition-colors">
+          <a href="/" className="text-sm text-white hover:text-red-100 transition-colors">
             ← กลับสู่หน้าแรก
           </a>
         </div>
+
       </div>
     </div>
   );
