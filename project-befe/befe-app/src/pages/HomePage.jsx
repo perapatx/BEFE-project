@@ -63,15 +63,15 @@ const HomePage = () => {
         ))}
       </section> */}
 
- {/* NewBoardGames  */}
+
       <section className="py-16 bg-red-50">
         <div className="container mx-auto px-4">
           <div className="relative mb-12 text-center">
-            {/ หัวข้อ /}
+          
             <h2 className="relative text-3xl font-bold z-10 px-6 py-4 inline-block text-red-900 drop-shadow-sm">
               New Arrived
             </h2>
-            {/ แถบเหลืองมีมิติ /}
+           
             <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 h-full rounded-xl shadow-md -z-0"></div>
           </div>
 
@@ -79,7 +79,7 @@ const HomePage = () => {
         </div>
       </section>
 
-       {/*FeaturedBoardGames */ }
+      
       <section className="py-16 bg-red-50">
         <div className="container mx-auto px-4">
           <div className="relative mb-12 text-center">

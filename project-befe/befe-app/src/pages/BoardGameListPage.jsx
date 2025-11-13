@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from '../components/SearchBar';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { getAllBoardGames } from '../data/boardGamesData'; // แก้เป็นข้อมูลบอร์ดเกม
+// import { getAllBoardGames } from '../data/boardGamesData'; // แก้เป็นข้อมูลบอร์ดเกม
 import GameCard from '../components/GameCard';
 const BoardGameListPage = () => {
   const [games, setGames] = useState([]);
@@ -11,6 +11,7 @@ const BoardGameListPage = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const gamesPerPage = 12;
+  const [error, setError] = useState('');
   
   const categories = [
     'all', 'strategy', 'family', 'party', 'co-op', 'card', 'dice', 'abstract'
@@ -19,13 +20,27 @@ const BoardGameListPage = () => {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      const gamesData = getAllBoardGames();
-      setGames(gamesData);
-      setFilteredGames(gamesData);
+      fetchBooks();
+      // const gamesData = getAllBoardGames();
+      // setGames(gamesData);
+      // setFilteredGames(gamesData);
       setLoading(false);
     }, 1000);
   }, []);
-
+const fetchBooks = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch('http://127.0.0.1:8080/api/v1/boardgames');
+      if (!res.ok) throw new Error('ไม่สามารถดึงข้อมูลหนังสือได้');
+      const data = await res.json();
+      setGames(data);
+      setFilteredGames(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   const handleSearch = (searchTerm) => {
     const filtered = games.filter(game => 
       game.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

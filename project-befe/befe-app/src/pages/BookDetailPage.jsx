@@ -15,7 +15,7 @@ const BookDetailPage = () => {
     const fetchBook = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://127.0.0.1:8080/api/v1/books/${id}`);
+        const response = await fetch(`cc/${id}`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch book details');
