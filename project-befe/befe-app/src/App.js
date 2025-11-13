@@ -40,7 +40,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
            <Route path="/games" element={<BoardGameListPage />} /> 
-          <Route path="/books/:id" element={<BookDetailPage />} />
+          <Route path="/games/:id" element={<BookDetailPage />} />
           <Route path="/categories" element={<CategoryPage />} />
           <Route path="/categories/:category" element={<CategoryPage />} />
           <Route path="/about" element={<AboutPage />} />
