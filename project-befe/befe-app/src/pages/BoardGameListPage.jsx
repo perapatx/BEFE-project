@@ -116,14 +116,13 @@ const fetchBooks = async () => {
               value={selectedCategory}
               onChange={(e) => handleCategoryFilter(e.target.value)}
             >
-              <option value="all">ทุกหมวดหมู่</option>
-              <option value="strategy">กลยุทธ์</option>
-              <option value="family">สำหรับครอบครัว</option>
-              <option value="party">ปาร์ตี้</option>
-              <option value="co-op">ร่วมมือ</option>
-              <option value="card">การ์ด</option>
-              <option value="dice">ลูกเต๋า</option>
-              <option value="abstract">นามธรรม</option>
+               <option value="all">ทุกหมวดหมู่</option>
+  <option value="Party">ปาร์ตี้</option>
+  <option value="Strategy">กลยุทธ์</option>
+  <option value="Family">สำหรับครอบครัว</option>
+  <option value="Card Game">การ์ด</option>
+  <option value="Cooperative">ร่วมมือ</option>
+  <option value="Economic">เศรษฐกิจ</option>
             </select>
             
             <select 

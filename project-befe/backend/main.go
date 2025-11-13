@@ -101,7 +101,7 @@ func getAllBoardGame(c *gin.Context) {
 	var rows *sql.Rows
 	var err error
 	// ลูกค้าถาม "มีหนังสืออะไรบ้าง"
-	rows, err = db.Query("SELECT id, title, creater, publisher, year, price, created_at, updated_at FROM board_games")
+	rows, err = db.Query("SELECT id, title, creater,category, publisher, year, price, created_at, updated_at FROM board_games")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -111,7 +111,7 @@ func getAllBoardGame(c *gin.Context) {
 	var boardgames []Boardgames
 	for rows.Next() {
 		var bg Boardgames
-		err := rows.Scan(&bg.ID, &bg.Title, &bg.Creater, &bg.Publisher, &bg.Year, &bg.Price, &bg.CreatedAt, &bg.UpdatedAt)
+		err := rows.Scan(&bg.ID, &bg.Title, &bg.Creater,&bg.Category, &bg.Publisher, &bg.Year, &bg.Price, &bg.CreatedAt, &bg.UpdatedAt)
 		if err != nil {
 			// handle error
 		}
