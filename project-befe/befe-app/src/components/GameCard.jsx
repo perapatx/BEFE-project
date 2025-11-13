@@ -87,7 +87,7 @@ const GameCard = ({ game }) => {
           </h3>
           
           {/* Author */}
-          <p className="text-sm text-gray-600 mb-3">โดย {game.author}</p>
+          <p className="text-sm text-gray-600 mb-3">โดย {game.creater}</p>
           
           {/* Rating */}
           <div className="flex items-center mb-3">

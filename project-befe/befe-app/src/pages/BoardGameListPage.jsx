@@ -43,8 +43,8 @@ const fetchBooks = async () => {
   };
   const handleSearch = (searchTerm) => {
     const filtered = games.filter(game => 
-      game.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      game.publisher.toLowerCase().includes(searchTerm.toLowerCase())
+      game.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      game.creater.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredGames(filtered);
     setCurrentPage(1);
