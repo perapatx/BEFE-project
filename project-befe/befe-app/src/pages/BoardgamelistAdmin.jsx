@@ -22,7 +22,7 @@ const BoardgamelistAdmin = () => {
   const fetchGames = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/v1/boardgames');
+      const res = await fetch('http://127.0.0.1:8080/api/v1/boardgames');
       if (!res.ok) throw new Error('ไม่สามารถดึงข้อมูลบอร์ดเกมได้');
       const data = await res.json();
       setGames(data);
