@@ -3,7 +3,7 @@ import { HeartIcon, ShoppingCartIcon, StarIcon } from '@heroicons/react/outline'
 import { HeartIcon as HeartSolidIcon, StarIcon as StarSolidIcon } from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 
-const GameCard = ({ book }) => {
+const GameCard = ({ game }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
 
@@ -20,29 +20,29 @@ const GameCard = ({ book }) => {
   };
 
   return (
-    <Link to={`/books/${book.id}`} className="block">
+    <Link to={`/boardgames/${game.id}`} className="block">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden group 
         hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
         
-        {/* Book Cover */}
+        {/* game Cover */}
         <div className="relative h-80 bg-gradient-to-br from-gray-100 to-gray-200">
           <img 
-            src={book.coverImage || '/images/placeholder-book.jpg'} 
-            alt={book.title}
+            src={game.coverImage || '/images/placeholder-game.jpg'} 
+            alt={game.title}
             className="w-full h-full object-cover"
           />
           
           {/* Badges */}
-          {book.isNew && (
+          {game.isNew && (
             <span className="absolute top-3 left-3 bg-green-500 text-white px-3 py-1 
               rounded-full text-xs font-semibold">
               ใหม่
             </span>
           )}
-          {book.discount && (
+          {game.discount && (
             <span className="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 
               rounded-full text-xs font-semibold">
-              -{book.discount}%
+              -{game.discount}%
             </span>
           )}
           
@@ -73,27 +73,27 @@ const GameCard = ({ book }) => {
           </div>
         </div>
         
-        {/* Book Details */}
+        {/* game Details */}
         <div className="p-5">
           {/* Category */}
           <p className="text-xs text-viridian-600 font-semibold uppercase tracking-wider mb-2">
-            {book.category}
+            {game.category}
           </p>
           
           {/* Title */}
           <h3 className="text-lg font-bold text-gray-900 mb-1 line-clamp-1 
             group-hover:text-viridian-600 transition-colors">
-            {book.title}
+            {game.title}
           </h3>
           
           {/* Author */}
-          <p className="text-sm text-gray-600 mb-3">โดย {book.author}</p>
+          <p className="text-sm text-gray-600 mb-3">โดย {game.author}</p>
           
           {/* Rating */}
           <div className="flex items-center mb-3">
             <div className="flex text-yellow-400">
               {[...Array(5)].map((_, i) => (
-                i < Math.floor(book.rating || 0) ? (
+                i < Math.floor(game.rating || 0) ? (
                   <StarSolidIcon key={i} className="h-4 w-4" />
                 ) : (
                   <StarIcon key={i} className="h-4 w-4" />
@@ -101,20 +101,20 @@ const GameCard = ({ book }) => {
               ))}
             </div>
             <span className="text-sm text-gray-600 ml-2">
-              ({book.reviews || 0} รีวิว)
+              ({game.reviews || 0} รีวิว)
             </span>
           </div>
           
           {/* Price */}
           <div className="flex items-center justify-between">
             <div>
-              {book.originalPrice && book.originalPrice !== book.price && (
+              {game.originalPrice && game.originalPrice !== game.price && (
                 <span className="text-sm text-gray-400 line-through mr-2">
-                  ฿{book.originalPrice}
+                  ฿{game.originalPrice}
                 </span>
               )}
               <span className="text-2xl font-bold text-viridian-600">
-                ฿{book.price}
+                ฿{game.price}
               </span>
             </div>
             
