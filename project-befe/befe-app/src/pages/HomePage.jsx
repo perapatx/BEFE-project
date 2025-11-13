@@ -47,52 +47,36 @@ const HomePage = () => {
         <p className="text-lg">รวมมิตรบอร์ดเกม</p>
       </section>
 
-      {/* Category Section
-      <section className="flex justify-center gap-4 py-4 bg-red-100">
-        {["กลยุทธ์", "ครอบครัว", "เด็ก"].map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`px-4 py-2 rounded-full font-medium transition ${selectedCategory === cat
-                ? "bg-red-600 text-white"
-                : "bg-white text-red-600 border border-red-400 hover:bg-red-200"
-              }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </section> */}
 
+      {/* NewBoardGames */}
+<section className="py-16 bg-red-50">
+  <div className="container mx-auto px-4">
+    <div className="relative mb-12 text-center">
+      {/* หัวข้อ */}
+      <h2 className="relative text-3xl font-bold z-10 px-6 py-4 inline-block text-red-900 drop-shadow-sm">
+        New Arrived
+      </h2>
+      {/* แถบเหลืองมีมิติ */}
+      <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 h-full rounded-xl shadow-md -z-0"></div>
+    </div>
 
-      <section className="py-16 bg-red-50">
-        <div className="container mx-auto px-4">
-          <div className="relative mb-12 text-center">
-          
-            <h2 className="relative text-3xl font-bold z-10 px-6 py-4 inline-block text-red-900 drop-shadow-sm">
-              New Arrived
-            </h2>
-           
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 h-full rounded-xl shadow-md -z-0"></div>
-          </div>
+    <NewBoardGames />
+  </div>
+</section>
 
-          <NewBoardGames />
-        </div>
-      </section>
+{/* FeaturedBoardGames */}
+<section className="py-16 bg-red-50">
+  <div className="container mx-auto px-4">
+    <div className="relative mb-12 text-center">
+      <h2 className="relative text-3xl font-bold z-10 px-6 py-4 inline-block text-red-900 drop-shadow-sm">
+        HOT Hit!!
+      </h2>
+      <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 h-full rounded-xl shadow-md -z-0"></div>
+    </div>
 
-      
-      <section className="py-16 bg-red-50">
-        <div className="container mx-auto px-4">
-          <div className="relative mb-12 text-center">
-            <h2 className="relative text-3xl font-bold z-10 px-6 py-4 inline-block text-red-900 drop-shadow-sm">
-              HOT Hit!!
-            </h2>
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 h-full rounded-xl shadow-md -z-0"></div>
-          </div>
-
-          <FeaturedBoardGames />
-        </div>
-      </section>
-
+    <FeaturedBoardGames />
+  </div>
+</section>
 
 
       {/* Game Cards */}
@@ -129,7 +113,7 @@ const HomePage = () => {
         <div className="fixed bottom-0 left-0 right-0 bg-red-700 text-white p-4 shadow-lg flex justify-between items-center">
           <span>🛒 {cart.length} รายการในตะกร้า</span>
           <Link
-            to="/cart"
+            to="/cartpage"
             className="bg-yellow-400 text-black px-4 py-2 rounded-full font-semibold"
           >
             ดูตะกร้า

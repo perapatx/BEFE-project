@@ -20,7 +20,7 @@ const GameCard = ({ game }) => {
   };
 
   return (
-    <Link to={`/boardgames/${game.id}`} className="block">
+    <Link to={`/games/${game.id}`} className="block">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden group 
         hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
         

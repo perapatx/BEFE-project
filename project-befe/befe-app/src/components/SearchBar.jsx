@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SearchIcon } from '@heroicons/react/outline';
 
-const SearchBar = ({ onSearch, placeholder = "ค้นหาหนังสือ..." }) => {
+const SearchBar = ({ onSearch, placeholder = "ค้นหาบอร์ดเกมที่โดนใจ..." }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSubmit = (e) => {

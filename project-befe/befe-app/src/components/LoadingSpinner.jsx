@@ -8,7 +8,7 @@ const LoadingSpinner = ({ size = 'medium', text = 'กำลังโหลด..
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[400px] py-12">
+    <div className="flex flex-col items-center justify-center min-h-screen w-full bg-red-50">
       <div className={`${sizeClasses[size]} border-viridian-200 border-t-viridian-600 
         rounded-full animate-spin`}></div>
       {text && (
