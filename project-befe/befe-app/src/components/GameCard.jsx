@@ -27,7 +27,7 @@ const GameCard = ({ game }) => {
         {/* game Cover */}
         <div className="relative h-80 bg-gradient-to-br from-gray-100 to-gray-200">
           <img 
-            src={game.coverImage || '/images/placeholder-game.jpg'} 
+            src={game.coverImage || '/images/placeholder-game.png'} 
             alt={game.title}
             className="w-full h-full object-cover"
           />
@@ -101,7 +101,7 @@ const GameCard = ({ game }) => {
               ))}
             </div>
             <span className="text-sm text-gray-600 ml-2">
-              ({game.reviews || 0} รีวิว)
+              ({game.reviews_count || 0} รีวิว)
             </span>
           </div>
           

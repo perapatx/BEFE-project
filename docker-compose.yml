@@ -39,7 +39,7 @@ services:
     build: ./project-befe/backend
     container_name: backend
     env_file:
-      - ./project-befe/backend/.env
+      - ./project-befe/backend/.env2
     ports:
       - "8080:8080"
     networks:
