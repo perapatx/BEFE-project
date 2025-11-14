@@ -101,7 +101,7 @@ func getAllBoardGame(c *gin.Context) {
 	var rows *sql.Rows
 	var err error
 	// ลูกค้าถาม "มีหนังสืออะไรบ้าง"
-	rows, err = db.Query("SELECT id, title, creater,category, publisher, year, price,rating,reviews_count, created_at, updated_at FROM board_games")
+	rows, err = db.Query("SELECT id, title, creater,category, publisher, year, price,min_players,max_players,rating,reviews_count,cover_image,language,stock, created_at, updated_at FROM board_games")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -111,7 +111,7 @@ func getAllBoardGame(c *gin.Context) {
 	var boardgames []Boardgames
 	for rows.Next() {
 		var bg Boardgames
-		err := rows.Scan(&bg.ID, &bg.Title, &bg.Creater,&bg.Category, &bg.Publisher, &bg.Year, &bg.Price,&bg.Rating,&bg.ReviewsCount, &bg.CreatedAt, &bg.UpdatedAt)
+		err := rows.Scan(&bg.ID, &bg.Title, &bg.Creater,&bg.Category, &bg.Publisher, &bg.Year, &bg.Price,&bg.Min_Player,&bg.Max_Player,&bg.Rating,&bg.ReviewsCount,&bg.CoverImage,&bg.Language,&bg.Stock, &bg.CreatedAt, &bg.UpdatedAt)
 		if err != nil {
 			// handle error
 		}
@@ -135,8 +135,8 @@ func getBoardGame(c *gin.Context) {
 	id := c.Param("id")
 	var bg Boardgames
 
-	err := db.QueryRow("SELECT id, title, creater, publisher, year, price,min_players,max_players,description, created_at, updated_at FROM board_games WHERE id = $1", id).
-		Scan(&bg.ID, &bg.Title, &bg.Creater, &bg.Publisher, &bg.Year, &bg.Price,&bg.Min_Player,&bg.Max_Player,&bg.Description, &bg.CreatedAt, &bg.UpdatedAt)
+	err := db.QueryRow("SELECT id, title, creater, publisher, year, price,min_players,max_players,description,cover_image,language,stock, created_at, updated_at FROM board_games WHERE id = $1", id).
+		Scan(&bg.ID, &bg.Title, &bg.Creater, &bg.Publisher, &bg.Year, &bg.Price,&bg.Min_Player,&bg.Max_Player,&bg.Description,&bg.CoverImage,&bg.Language,&bg.Stock, &bg.CreatedAt, &bg.UpdatedAt)
 
 	if err == sql.ErrNoRows {
 		c.JSON(http.StatusNotFound, gin.H{"error": "boardgame not found"})
