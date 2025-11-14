@@ -8,24 +8,28 @@ const AboutPage = () => {
     description: "ร้านบอร์ดเกมครบวงจรสำหรับทุกคนที่รักการเล่นเกม เรามีทั้งเกมวางแผน เกมครอบครัว และเกมปาร์ตี้ให้เลือกมากมาย พร้อมทีมงานที่รักในบอร์ดเกมไม่แพ้คุณ!",
     staff: [
       {
-        name: "หมอกเม็ด",
-        role: "ผู้ก่อตั้ง",
+        name: "น.ส.ชนม์นิภา  คำนูณวัฒน์",
+        role: "หน้าที่ ",
         image: "/images/staff1.jpg",
+        studentId:"660710701",
       },
       {
-        name: "แจ็คพอตแตก",
-        role: "ผู้จัดการร้าน",
+        name: "นายพีรพัชร  คล้ายสำเนียง",
+        role: "หน้าที่",
         image: "/images/staff2.jpg",
+        studentId:"660710729",
       },
       {
-        name: "หมิวซ่า",
-        role: "ฝ่ายจัดส่ง",
+        name: "น.ส.อโนชา ทองด้วง",
+        role: "หน้าที่",
         image: "/images/staff3.jpg",
+         studentId:"660710749",
       },
       {
-        name: "จูนนี่",
-        role: "ฝ่ายบริการลูกค้า",
+        name: "น.ส.ธีมาพร  เรืองศรี",
+        role: "หน้าที่",
         image: "/images/staff4.jpg",
+        studentId:"660710761",
       },
     ],
   };
@@ -45,11 +49,14 @@ const AboutPage = () => {
           ทีมงานของเรา
         </h3>
 
-        <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 px-6">
+       <div className="max-w-screen-xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-14 px-10 justify-items-center">
+
+
           {store.staff.map((member, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition text-center p-8 border border-yellow-200"
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition text-center p-10 border border-yellow-200 w-72"
+
             >
               <div className="w-36 h-36 mx-auto rounded-full overflow-hidden mb-4 border-4 border-red-500 shadow-sm">
                 <img
@@ -58,9 +65,12 @@ const AboutPage = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-1">
+              <h4 className="text-base font-bold text-gray-800 mb-1">
                 {member.name}
               </h4>
+              <p className="text-gray-600 text-sm mb-1">
+               {member.studentId}
+              </p>
               <p className="text-red-600 text-sm font-medium">
                 {member.role}
               </p>

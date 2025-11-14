@@ -15,10 +15,9 @@ import CategoryPage from './pages/CategoryPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import LoginPage from './pages/LoginPage';
-import AddBookPage from './pages/AddBookPage';
-import BooklistAdmin from './pages/BooklistAdmin';
-import CartPage from './pages/CartPage';
 import AddBoardGamePage from './pages/AddBoardGamePage';
+import BoardgamelistAdmin from './pages/BoardgamelistAdmin';
+import CartPage from './pages/CartPage';
 function Layout() {
   return (
     <div className="flex flex-col min-h-screen">
