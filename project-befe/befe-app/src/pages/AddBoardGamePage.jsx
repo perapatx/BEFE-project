@@ -35,7 +35,6 @@ const AddBoardGamePage = () => {
     e.preventDefault();
     setMessage("");
 
-    // แปลงค่า numeric fields ให้เป็นตัวเลข
     const payload = {
       ...formData,
       year: Number(formData.year) || 0,
@@ -45,7 +44,7 @@ const AddBoardGamePage = () => {
       reviews_count: Number(formData.reviews_count) || 0,
       min_players: Number(formData.min_players) || 0,
       max_players: Number(formData.max_players) || 0,
-      is_new: formData.is_new, // boolean ไม่ต้องแปลง
+      is_new: formData.is_new,
     };
 
     try {
@@ -68,7 +67,6 @@ const AddBoardGamePage = () => {
           max_players: "",
           language: "",
         });
-        // redirect หลังจากเพิ่มสำเร็จ
         setTimeout(() => {
           navigate("/store-manager/boardgamelist");
         }, 800);
@@ -83,16 +81,26 @@ const AddBoardGamePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-400 via-red-500 to-red-400 flex justify-center items-center p-6">
-      <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-3xl">
+    <div className="min-h-screen bg-gradient-to-br from-red-400 via-red-500 to-red-400 flex justify-center items-start p-6 pt-12">
+      <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-3xl relative">
+
+        {/* ปุ่มย้อนกลับ */}
+        <button
+          onClick={() => navigate("/store-manager/boardgamelist")}
+          className="absolute top-4 left-4 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg font-medium shadow"
+        >
+          ← กลับไปยังรายการบอร์ดเกม
+        </button>
+
         <h2 className="text-3xl font-bold text-center text-red-600 mb-6">
           เพิ่มบอร์ดเกมใหม่
         </h2>
 
         {message && (
           <div
-            className={`text-center mb-4 font-semibold ${message.startsWith("✅") ? "text-green-600" : "text-red-600"
-              }`}
+            className={`text-center mb-4 font-semibold ${
+              message.startsWith("✅") ? "text-green-600" : "text-red-600"
+            }`}
           >
             {message}
           </div>

@@ -35,7 +35,6 @@ const EditBoardGamePage = () => {
         setMessage("❌ โหลดข้อมูลไม่สำเร็จ");
       }
     };
-
     fetchGame();
   }, [id]);
 
@@ -72,7 +71,6 @@ const EditBoardGamePage = () => {
 
       if (res.status === 200) {
         setMessage("✅ แก้ไขบอร์ดเกมสำเร็จ!");
-
         setTimeout(() => {
           navigate("/store-manager/boardgamelist");
         }, 800);
@@ -83,8 +81,17 @@ const EditBoardGamePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-400 via-red-500 to-red-400 flex justify-center items-center p-6">
-      <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-3xl">
+    <div className="min-h-screen bg-gradient-to-br from-red-400 via-red-500 to-red-400 flex justify-center items-start p-6 pt-12">
+      <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-3xl relative">
+
+        {/* ปุ่มย้อนกลับ */}
+        <button
+          onClick={() => navigate("/store-manager/boardgamelist")}
+          className="absolute top-4 left-4 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg font-medium shadow"
+        >
+          ← กลับไปยังรายการบอร์ดเกม
+        </button>
+
         <h2 className="text-3xl font-bold text-center text-red-600 mb-6">
           แก้ไขบอร์ดเกม
         </h2>
@@ -100,8 +107,6 @@ const EditBoardGamePage = () => {
         )}
 
         <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* --- ข้อมูลฟอร์มเหมือนหน้า Add ทั้งหมด --- */}
-
           <div>
             <label className="block text-gray-700 font-medium mb-1">ชื่อเกม</label>
             <input
