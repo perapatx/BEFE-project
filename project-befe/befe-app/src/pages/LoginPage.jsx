@@ -16,7 +16,7 @@ const LoginPage = () => {
     if (username === 'boardgameadmin' && password === 'mysecure123pass') {
     // Store authentication token/flag
       localStorage.setItem('isAdminAuthenticated', 'true');
-      navigate('/store-manager/booklist');
+      navigate('/store-manager/boardgamelist');
     } else {
       setError('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
     }

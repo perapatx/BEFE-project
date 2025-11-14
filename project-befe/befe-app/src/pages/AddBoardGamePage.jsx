@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddBoardGamePage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     creater: "",
@@ -30,51 +32,55 @@ const AddBoardGamePage = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setMessage("");
+    e.preventDefault();
+    setMessage("");
 
-  // แปลงค่า numeric fields ให้เป็นตัวเลข
-  const payload = {
-    ...formData,
-    year: Number(formData.year) || 0,
-    price: parseFloat(formData.price) || 0,
-    stock: Number(formData.stock) || 0,
-    rating: parseFloat(formData.rating) || 0,
-    reviews_count: Number(formData.reviews_count) || 0,
-    min_players: Number(formData.min_players) || 0,
-    max_players: Number(formData.max_players) || 0,
-    is_new: formData.is_new, // boolean ไม่ต้องแปลง
+    // แปลงค่า numeric fields ให้เป็นตัวเลข
+    const payload = {
+      ...formData,
+      year: Number(formData.year) || 0,
+      price: parseFloat(formData.price) || 0,
+      stock: Number(formData.stock) || 0,
+      rating: parseFloat(formData.rating) || 0,
+      reviews_count: Number(formData.reviews_count) || 0,
+      min_players: Number(formData.min_players) || 0,
+      max_players: Number(formData.max_players) || 0,
+      is_new: formData.is_new, // boolean ไม่ต้องแปลง
+    };
+
+    try {
+      const res = await axios.post("http://localhost:8080/api/v1/boardgames", payload);
+      if (res.status === 201) {
+        setMessage("✅ เพิ่มบอร์ดเกมสำเร็จ!");
+        setFormData({
+          title: "",
+          creater: "",
+          publisher: "",
+          category: "",
+          year: "",
+          description: "",
+          price: "",
+          stock: "",
+          rating: "",
+          reviews_count: "",
+          is_new: false,
+          min_players: "",
+          max_players: "",
+          language: "",
+        });
+        // redirect หลังจากเพิ่มสำเร็จ
+        setTimeout(() => {
+          navigate("/store-manager/boardgamelist");
+        }, 800);
+      }
+    } catch (err) {
+      if (err.response && err.response.data && err.response.data.error) {
+        setMessage("❌ เกิดข้อผิดพลาด: " + err.response.data.error);
+      } else {
+        setMessage("❌ เกิดข้อผิดพลาด: " + err.message);
+      }
+    }
   };
-
-  try {
-    const res = await axios.post("http://localhost:8080/api/v1/boardgames", payload);
-    if (res.status === 201) {
-      setMessage("✅ เพิ่มบอร์ดเกมสำเร็จ!");
-      setFormData({
-        title: "",
-        creater: "",
-        publisher: "",
-        category: "",
-        year: "",
-        description: "",
-        price: "",
-        stock: "",
-        rating: "",
-        reviews_count: "",
-        is_new: false,
-        min_players: "",
-        max_players: "",
-        language: "",
-      });
-    }
-  } catch (err) {
-    if (err.response && err.response.data && err.response.data.error) {
-      setMessage("❌ เกิดข้อผิดพลาด: " + err.response.data.error);
-    } else {
-      setMessage("❌ เกิดข้อผิดพลาด: " + err.message);
-    }
-  }
-};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-400 via-red-500 to-red-400 flex justify-center items-center p-6">
@@ -85,9 +91,8 @@ const AddBoardGamePage = () => {
 
         {message && (
           <div
-            className={`text-center mb-4 font-semibold ${
-              message.startsWith("✅") ? "text-green-600" : "text-red-600"
-            }`}
+            className={`text-center mb-4 font-semibold ${message.startsWith("✅") ? "text-green-600" : "text-red-600"
+              }`}
           >
             {message}
           </div>

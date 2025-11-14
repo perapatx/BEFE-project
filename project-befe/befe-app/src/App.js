@@ -10,6 +10,7 @@ import NotFound from './components/NotFound';
 import HomePage from './pages/HomePage';
 import BoardGameListPage from './pages/BoardGameListPage';
 import BoardGameDetailPage from './pages/BoardGameDetailPage';
+import EditBoardGamePage from './pages/EditBoardGamePage';
 import CategoryPage from './pages/CategoryPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
@@ -37,7 +38,8 @@ function App() {
         {/* {/ ✅ Routes ที่ไม่มี Navbar/Footer /} */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/store-manager/add-BoardGame" element={<AddBoardGamePage />} />
-        <Route path='/store-manager/booklist' element={<BoardgamelistAdmin/>}/>
+        <Route path='/store-manager/boardgamelist' element={<BoardgamelistAdmin/>}/>
+        <Route path='/store-manager/edit-boardgame/:id' element={<EditBoardGamePage/>}/>
         {/* {/ ✅ Routes ที่มี Navbar/Footer /} */}
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />

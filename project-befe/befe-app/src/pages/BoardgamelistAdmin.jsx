@@ -33,16 +33,16 @@ const BoardgamelistAdmin = () => {
     }
   };
 
-  // const handleDelete = async (id) => {
-  //   if (!window.confirm('คุณแน่ใจว่าจะลบบอร์ดเกมนี้?')) return;
-  //   try {
-  //     const res = await fetch(`/api/v1/boardgames/${id}`, { method: 'DELETE' });
-  //     if (!res.ok) throw new Error('ลบบอร์ดเกมไม่สำเร็จ');
-  //     setGames(prev => prev.filter(game => game.id !== id));
-  //   } catch (err) {
-  //     setError(err.message);
-  //   }
-  // };
+  const handleDelete = async (id) => {
+    if (!window.confirm('คุณแน่ใจว่าจะลบบอร์ดเกมนี้?')) return;
+    try {
+      const res = await fetch(`http://127.0.0.1:8080/api/v1/boardgames/${id}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error('ลบบอร์ดเกมไม่สำเร็จ');
+      setGames(prev => prev.filter(game => game.id !== id));
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -110,17 +110,18 @@ const BoardgamelistAdmin = () => {
                     <td className="px-6 py-3">{game.language}</td>
                     <td className="px-6 py-3 flex gap-2">
                       <button
-                        onClick={() => navigate(`/edit-boardgame/${game.id}`)}
+                        onClick={() => navigate(`/store-manager/edit-boardgame/${game.id}`)}
                         className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg flex items-center gap-1"
                       >
                         <PencilAltIcon className="h-4 w-4" /> แก้ไข
                       </button>
                       <button
-                        // onClick={() => handleDelete(game.id)}
+                        onClick={() => handleDelete(game.id)}
                         className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg flex items-center gap-1"
                       >
                         <TrashIcon className="h-4 w-4" /> ลบ
                       </button>
+
                     </td>
                   </tr>
                 ))}
