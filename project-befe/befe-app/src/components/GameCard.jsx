@@ -27,7 +27,7 @@ const GameCard = ({ game }) => {
         {/* game Cover */}
         <div className="relative h-80 bg-gradient-to-br from-gray-100 to-gray-200">
           <img 
-            src={game.coverImage || '/images/placeholder-game.png'} 
+            src={game.cover_image || '/images/boardgameCover/1.png'} 
             alt={game.title}
             className="w-full h-full object-cover"
           />
@@ -39,12 +39,12 @@ const GameCard = ({ game }) => {
               ใหม่
             </span>
           )}
-          {game.discount && (
+          {/* {game.discount && (
             <span className="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 
               rounded-full text-xs font-semibold">
               -{game.discount}%
             </span>
-          )}
+          )} */}
           
           {/* Quick Actions - Show on Hover */}
           <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 
@@ -63,10 +63,10 @@ const GameCard = ({ game }) => {
               </button>
               <button 
                 onClick={handleAddToCart}
-                className="p-3 bg-white rounded-full hover:bg-viridian-50 transition-colors"
+                className="p-3 bg-white rounded-full hover:bg-red-50 transition-colors"
               >
                 <ShoppingCartIcon className={`h-6 w-6 ${
-                  isInCart ? 'text-viridian-600' : 'text-gray-700'
+                  isInCart ? 'text-red-600' : 'text-gray-700'
                 }`} />
               </button>
             </div>
@@ -76,13 +76,13 @@ const GameCard = ({ game }) => {
         {/* game Details */}
         <div className="p-5">
           {/* Category */}
-          <p className="text-xs text-viridian-600 font-semibold uppercase tracking-wider mb-2">
+          <p className="text-xs text-red-600 font-semibold uppercase tracking-wider mb-2">
             {game.category}
           </p>
           
           {/* Title */}
           <h3 className="text-lg font-bold text-gray-900 mb-1 line-clamp-1 
-            group-hover:text-viridian-600 transition-colors">
+            group-hover:text-red-600 transition-colors">
             {game.title}
           </h3>
           
@@ -113,7 +113,7 @@ const GameCard = ({ game }) => {
                   ฿{game.originalPrice}
                 </span>
               )}
-              <span className="text-2xl font-bold text-viridian-600">
+              <span className="text-2xl font-bold text-red-600">
                 ฿{game.price}
               </span>
             </div>
@@ -122,8 +122,8 @@ const GameCard = ({ game }) => {
               onClick={handleAddToCart}
               className={`px-4 py-2 rounded-lg font-semibold transition-all duration-200 
                 ${isInCart 
-                  ? 'bg-green-500 text-white hover:bg-green-600' 
-                  : 'bg-viridian-600 text-white hover:bg-viridian-700'
+                  ? 'bg-red-500 text-white hover:bg-red-600' 
+                  : 'bg-red-600 text-white hover:bg-red-700'
                 }`}>
               {isInCart ? 'ในตะกร้า' : 'เพิ่มลงตะกร้า'}
             </button>

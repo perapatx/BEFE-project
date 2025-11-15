@@ -16,9 +16,12 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="h-10 w-10 bg-red-800 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-              <span className="text-white font-bold text-xl">🎲</span>
-            </div>
+            {/* <div className="h-10 w-10 bg-red-800 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+              
+              <img src="/Logo.png" alt="" />
+            </div> */}
+            
+            <img className="h-10 w-10 items-center justify-center group-hover:scale-110 transition-transform" src="/Logo.png" alt="" />
             <span className="text-2xl font-bold tracking-wide">
               Board Game Paradise
             </span>

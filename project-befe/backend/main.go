@@ -135,8 +135,8 @@ func getBoardGame(c *gin.Context) {
 	id := c.Param("id")
 	var bg Boardgames
 
-	err := db.QueryRow("SELECT id, title, creater, publisher, year, price,min_players,max_players,description,cover_image,language,stock, created_at, updated_at FROM board_games WHERE id = $1", id).
-		Scan(&bg.ID, &bg.Title, &bg.Creater, &bg.Publisher, &bg.Year, &bg.Price,&bg.Min_Player,&bg.Max_Player,&bg.Description,&bg.CoverImage,&bg.Language,&bg.Stock, &bg.CreatedAt, &bg.UpdatedAt)
+	err := db.QueryRow("SELECT id, title, creater, publisher, year,rating,reviews_count, price,min_players,max_players,description,cover_image,language,stock, created_at, updated_at FROM board_games WHERE id = $1", id).
+		Scan(&bg.ID, &bg.Title, &bg.Creater, &bg.Publisher, &bg.Year,&bg.Rating,&bg.ReviewsCount, &bg.Price,&bg.Min_Player,&bg.Max_Player,&bg.Description,&bg.CoverImage,&bg.Language,&bg.Stock, &bg.CreatedAt, &bg.UpdatedAt)
 
 	if err == sql.ErrNoRows {
 		c.JSON(http.StatusNotFound, gin.H{"error": "boardgame not found"})

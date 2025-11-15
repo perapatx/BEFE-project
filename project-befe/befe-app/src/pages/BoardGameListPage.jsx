@@ -112,7 +112,7 @@ const fetchBooks = async () => {
             
             <select 
               className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none 
-                focus:ring-2 focus:ring-viridian-500 cursor-pointer"
+                focus:ring-2 focus:ring-red-500 cursor-pointer"
               value={selectedCategory}
               onChange={(e) => handleCategoryFilter(e.target.value)}
             >
@@ -127,7 +127,7 @@ const fetchBooks = async () => {
             
             <select 
               className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none 
-                focus:ring-2 focus:ring-viridian-500 cursor-pointer"
+                focus:ring-2 focus:ring-red-500 cursor-pointer"
               value={sortBy}
               onChange={(e) => handleSort(e.target.value)}
             >
@@ -182,7 +182,7 @@ const fetchBooks = async () => {
                       onClick={() => paginate(pageNumber)}
                       className={`px-4 py-2 rounded-lg ${
                         currentPage === pageNumber
-                          ? 'bg-viridian-600 text-white' 
+                          ? 'bg-red-600 text-white' 
                           : 'border border-gray-300 hover:bg-gray-50'
                       }`}
                     >

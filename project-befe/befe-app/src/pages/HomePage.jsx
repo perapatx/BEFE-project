@@ -42,10 +42,41 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-red-50 text-gray-800">
       {/* Hero Section */}
-      <section className="text-center py-12 bg-gradient-to-b from-red-600 to-red-400 text-white">
-        <h1 className="text-4xl font-bold mb-2">มีปาร์ตี้ ต้องมีบอร์ดเกม</h1>
-        <p className="text-lg">รวมมิตรบอร์ดเกม</p>
-      </section>
+      <section className="
+  relative overflow-hidden
+  text-center py-16 
+  bg-gradient-to-b from-red-600 via-red-500 to-red-400 
+  text-white
+">
+  {/* เอฟเฟกต์แสงวงกลม */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute -top-10 -left-10 w-52 h-52 bg-white opacity-20 rounded-full blur-3xl animate-pulse"></div>
+    <div className="absolute top-20 right-0 w-64 h-64 bg-yellow-300 opacity-30 rounded-full blur-3xl animate-ping"></div>
+  </div>
+
+  {/* ตัวการ์ตูน */}
+  <div className="flex justify-center gap-6 mb-6 relative z-10">
+    <img
+      src="/Logo.png"
+      alt="mascot1"
+      className="w-24 h-24 animate-bounce drop-shadow-xl"
+    />
+    
+    
+  </div>
+
+  {/* หัวข้อ */}
+  <h1 className="text-4xl md:text-5xl font-extrabold mb-3 drop-shadow-xl animate-fade-in">
+    มีปาร์ตี้ ต้องมีบอร์ดเกม
+  </h1>
+  <p className="text-lg md:text-xl opacity-90 animate-fade-in-delay">
+    รวมมิตรบอร์ดเกม สนุกได้ทุกกลุ่ม ทุกงานเลี้ยง
+  </p>
+
+  {/* ลวดลายตกแต่ง */}
+  <div className="absolute bottom-0 left-0 right-0 h-10 bg-white/0 backdrop-blur-sm"></div>
+</section>
+
 
 
       {/* NewBoardGames */}

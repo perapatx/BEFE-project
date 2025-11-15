@@ -82,35 +82,94 @@ CREATE INDEX idx_board_games_discount ON board_games(discount DESC) WHERE discou
 CREATE INDEX idx_board_games_is_new ON board_games(is_new) WHERE is_new = true;
 
 -- เพิ่มข้อมูลตัวอย่าง
-INSERT INTO board_games 
-(title, creater, publisher, category, year, description, price, original_price, discount, stock, rating, reviews_count, is_new, min_players, max_players, language, cover_image)
-VALUES
-('Catan', 'Klaus Teuber', 'Kosmos', 'Strategy', 1995, 'เกมวางแผนสร้างอาณานิคมและค้าขายระหว่างผู้เล่น', 1500.00, 1800.00, 20, 10, 4.7, 245, false, 3, 4, 'English', 'https://example.com/images/catan.jpg'),
-('Uno', 'Merle Robbins', 'Mattel', 'Card', 1971, 'เกมไพ่ยอดนิยมสำหรับทุกเพศทุกวัย เล่นง่าย สนุกกับเพื่อนและครอบครัว', 150.00, 200.00, 25, 100, 4.5, 1020, true, 2, 10, 'Thai', 'https://example.com/images/uno.jpg'),
-('Ticket to Ride', 'Alan R. Moon', 'Days of Wonder', 'Family', 2004, 'เดินทางเก็บเส้นทางรถไฟทั่วอเมริกาเพื่อทำคะแนน', 1800.00, 2000.00, 10, 20, 4.8, 330, true, 2, 5, 'English', 'https://example.com/images/ticket_to_ride.jpg');
+-- INSERT INTO board_games 
+-- (title, creater, publisher, category, year, description, price, original_price, discount, stock, rating, reviews_count, is_new, min_players, max_players, language, cover_image)
+-- VALUES
+-- ('Catan', 'Klaus Teuber', 'Kosmos', 'Strategy', 1995, 'เกมวางแผนสร้างอาณานิคมและค้าขายระหว่างผู้เล่น', 1500.00, 1800.00, 20, 10, 4.7, 245, false, 3, 4, 'English', '/images/boardgameCover//catan.jpg'),
+-- ('Uno', 'Merle Robbins', 'Mattel', 'Card', 1971, 'เกมไพ่ยอดนิยมสำหรับทุกเพศทุกวัย เล่นง่าย สนุกกับเพื่อนและครอบครัว', 150.00, 200.00, 25, 100, 4.5, 1020, true, 2, 10, 'Thai', '/images/boardgameCover//uno.jpg'),
+-- ('Ticket to Ride', 'Alan R. Moon', 'Days of Wonder', 'Family', 2004, 'เดินทางเก็บเส้นทางรถไฟทั่วอเมริกาเพื่อทำคะแนน', 1800.00, 2000.00, 10, 20, 4.8, 330, true, 2, 5, 'English', '/images/boardgameCover//ticket_to_ride.jpg');
 
 INSERT INTO board_games (
   title, creater, publisher, category, year, description,
   price, original_price, discount, stock, rating, reviews_count, is_new,
   min_players, max_players, language, cover_image
 ) VALUES
-('Ultimate Werewolf', 'Ted Alspach', 'Bezier Games', 'Party', 2010, 'เกมสืบสวนและปริศนา ผู้เล่นต้องหาตัวผู้ร้ายในหมู่คนอื่น', 650.0, 750.0, 10, 80, 4.4, 28, false, 5, 10, 'English', 'https://www.goldengoblingames.com/ultimate-werewolf-deluxe-edition-8979.jpg'),
-('Citadels', 'Bruno Faidutti', 'Fantasy Flight Games', 'Strategy', 2000, 'เกมสร้างเมือง แข่งขันบัตรบทบาทต่างๆ', 23.0, 30.0, 20, 19, 4.1, 79, false, 2, 8, 'English', 'https://example.com/images/citadels.jpg'),
-('Geistes Blitz', 'Kristian Köhntopp', 'Ravensburger', 'Party', 2005, 'เกมสังเกตและเร็วในการจับไอเทมที่ตรงกัน', 10.0, 15.0, 33, 47, 4.5, 56, true, 2, 8, 'English', 'https://example.com/images/geistes_blitz.jpg'),
-('Secret Hitler', 'Max Temkin', 'Goat, Wolf & Cabbage LLC', 'Strategy', 2016, 'เกมการเมืองแฝงตัว เป็นฝ่ายลับและฝ่ายเปิดเผย', 56.0, 65.0, 14, 13, 4.3, 46, true, 5, 10, 'English', 'https://example.com/images/secret_hitler.jpg'),
-('Spyfall', 'Alexandra Ushan', 'Cryptozoic Entertainment', 'Party', 2014, 'เกมถามตอบสืบสวนผู้เล่นที่เป็นสายลับ', 50.0, 60.0, 17, 69, 4.2, 51, false, 3, 8, 'English', 'https://example.com/images/spyfall.jpg'),
-('คำต้องห้าม', 'Thai Game Studio', 'Local Publisher', 'Party', 2020, 'เกมทายคำ ต้องห้ามพูดบางคำ', 5.0, 7.0, 28, 48, 3.9, 57, true, 3, 8, 'Thai', 'https://example.com/images/คำต้องห้าม.jpg'),
-('โยคี', 'Thai Game Studio', 'Local Publisher', 'Party', 2018, 'เกมวางแผนแบบง่ายๆ สำหรับทุกเพศทุกวัย', 55.0, 60.0, 8, 34, 4.0, 4, false, 2, 6, 'Thai', 'https://example.com/images/โยคี.jpg'),
-('Taco Cat Goat Cheese Pizza', 'Dave Campbell', 'Goliath Games', 'Party', 2018, 'เกมไพ่เร็วและฮา เหมาะกับปาร์ตี้', 16.0, 20.0, 20, 23, 4.1, 14, false, 2, 8, 'English', 'https://example.com/images/taco_cat_goat.jpg'),
-('Camel Up', 'Steffen Bogen', 'Pegasus Spiele', 'Strategy', 2014, 'เกมแข่งอูฐที่ผู้เล่นเดิมพันเพื่อชนะ', 75.0, 80.0, 6, 57, 4.3, 25, true, 2, 8, 'English', 'https://example.com/images/camel_up.jpg'),
-('Ethnos', 'Peter Dunstan', 'CMON Limited', 'Card Game', 2018, 'เกมการ์ดแฟนตาซี แข่งชิงพื้นที่และคะแนน', 69.0, 75.0, 8, 67, 4.2, 12, true, 2, 6, 'English', 'https://example.com/images/ethnos.jpg'),
-('Exploding Kitten Party Pack', 'Elan Lee', 'Exploding Kittens', 'Party', 2016, 'เกมไพ่ระเบิด ที่ต้องวางแผนหลีกเลี่ยงระเบิด', 93.0, 100.0, 7, 95, 4.0, 44, false, 2, 6, 'English', 'https://example.com/images/exploding_kitten.jpg'),
-('Mogel Motte', 'Uwe Rosenberg', 'Amigo Spiele', 'Cooperative', 2013, 'เกมร่วมมือปกป้องตัวอ่อนแมลง', 75.0, 80.0, 6, 44, 4.1, 67, true, 2, 4, 'German', 'https://example.com/images/mogel_motte.jpg'),
-('Deception', 'Takeshi Kikuchi', 'Grey Fox Games', 'Party', 2015, 'เกมสืบสวน แก้ปริศนาฆาตกรรม', 37.0, 40.0, 8, 17, 4.2, 66, true, 3, 8, 'English', 'https://example.com/images/deception.jpg'),
-('Splendor', 'Marc André', 'Space Cowboys', 'Economic', 2014, 'เกมสะสมเพชรและสร้างอาณาจักร', 97.0, 100.0, 5, 84, 4.4, 48, true, 2, 4, 'English', 'https://example.com/images/splendor.jpg'),
-('เกมการ์ดโอฮาน่า', 'Thai Studio', 'Local Publisher', 'Economic', 2019, 'เกมการ์ดเล่นง่ายสำหรับครอบครัว', 42.0, 50.0, 6, 63, 4.0, 86, true, 2, 6, 'Thai', 'https://example.com/images/ohana.jpg'),
-('Dixit', 'Jean-Louis Roubira', 'Libellud', 'Strategy', 2008, 'เกมเล่าเรื่องด้วยภาพและจินตนาการ', 33.0, 40.0, 5, 71, 4.5, 57, true, 3, 6, 'French', 'https://example.com/images/dixit.jpg'),
-('Survive from the Atlantis!', 'Klaus Teuber', 'Kosmos', 'Card Game', 2010, 'เกมเอาชีวิตรอดใต้ทะเลแอตแลนติส', 91.0, 100.0, 8, 10, 4.0, 8, true, 2, 6, 'English', 'https://example.com/images/survive_atlantis.jpg'),
-('Avalon', 'Don Eskridge', 'Indie Boards', 'Family', 2012, 'เกมปาร์ตี้แฟมิลี่ เล่นง่าย', 38.0, 45.0, 6, 32, 4.3, 77, true, 3, 6, 'English', 'https://example.com/images/avalon.jpg'),
-('Settler of Catan', 'Klaus Teuber', 'Kosmos', 'Strategy', 1995, 'เกมวางแผนสร้างอาณานิคมและค้าขายระหว่างผู้เล่น', 68.0, 75.0, 10, 77, 4.6, 58, true, 3, 4, 'English', 'https://example.com/images/settler_catan.jpg'),
-('Codenames Pictures', 'Vlaada Chvátil', 'Czech Games Edition', 'Cooperative', 2016, 'เกมสื่อสารสัญลักษณ์ให้เพื่อนเดา', 47.0, 50.0, 6, 84, 4.2, 64, true, 2, 8, 'English', 'https://example.com/images/codenames_pictures.jpg');
+('Ultimate Werewolf', 'Ted Alspach', 'Bezier Games', 'Party', 2010, 
+'เกมสังคมบลัฟและสืบสวน ผู้เล่นจะแบ่งเป็นหมู่บ้านและมนุษย์หมาป่า หมาป่าจะค่อย ๆ กำจัดชาวบ้านในตอนกลางคืน ในขณะที่ชาวบ้านต้องใช้การสังเกต การเดา และการโต้เถียงเพื่อตามหาหมาป่า เกมสนุกและใช้ทักษะการพูด การหลอกล่อ และการวิเคราะห์จิตใจผู้เล่นอื่น',
+650.0, 750.0, 10, 80, 4.4, 28, false, 5, 10, 'English', '/images/boardgameCover/1.jpg'),
+
+('Citadels', 'Bruno Faidutti', 'Fantasy Flight Games', 'Strategy', 2000,
+'เกมสร้างเมืองและบทบาทที่ต้องวางแผน ผู้เล่นเลือกตัวละครแต่ละรอบเพื่อเก็บเงิน สร้างอาคาร และใช้ความสามารถพิเศษของตัวละครเอาชนะคู่ต่อสู้ เกมต้องใช้กลยุทธ์ การคิดล่วงหน้า และการคาดเดาการเคลื่อนไหวของคนอื่น',
+23.0, 30.0, 20, 19, 4.1, 79, false, 2, 8, 'English', '/images/boardgameCover/2.jpg'),
+
+('Geistes Blitz', 'Kristian Köhntopp', 'Ravensburger', 'Party', 2005,
+'เกมรีแอคชั่นเร็ว ผู้เล่นต้องหยิบวัตถุให้ตรงกับการ์ดที่เปิดโดยใช้สายตาและความไว วัตถุแต่ละชิ้นมีสีและรูปร่างต่างกัน ทำให้ต้องคิดเร็วและจับจังหวะให้แม่น เกมสนุก เหมาะกับครอบครัวและเด็ก',
+10.0, 15.0, 33, 47, 4.5, 56, true, 2, 8, 'English', '/images/boardgameCover/3.jpg'),
+
+('Secret Hitler', 'Max Temkin', 'Goat, Wolf & Cabbage LLC', 'Strategy', 2016,
+'เกมสังคมบลัฟและสืบสวน ผู้เล่นแบ่งเป็นฝ่ายลิเบอรัลและฟาสซิสต์ โดยมี “ฮิตเลอร์” หนึ่งคน ฟาสซิสต์ต้องซ่อนตัวและช่วยฮิตเลอร์ขึ้นสู่อำนาจ ในขณะที่ลิเบอรัลต้องสืบหาฮิตเลอร์ เกมเน้นการพูด การเก็บข้อมูล และการบลัฟ',
+56.0, 65.0, 14, 13, 4.3, 46, true, 5, 10, 'English', '/images/boardgameCover/4.jpg'),
+
+('Spyfall', 'Alexandra Ushan', 'Cryptozoic Entertainment', 'Party', 2014,
+'เกมถาม-ตอบและเดาสายลับ ผู้เล่นทุกคนยกเว้นสายลับรู้สถานที่ที่เล่นอยู่ ผู้เล่นต้องถามตอบกันเพื่อหาว่าสายลับคือใคร ในขณะเดียวกันสายลับต้องคอยปกปิดตัวเอง เกมเน้นการสังเกต การวิเคราะห์ และการสื่อสาร',
+50.0, 60.0, 17, 69, 4.2, 51, false, 3, 8, 'English', '/images/boardgameCover/5.jpg'),
+
+('คำต้องห้าม', 'Thai Game Studio', 'Local Publisher', 'Party', 2020,
+'เกมปาร์ตี้ที่ผู้เล่นต้องอธิบายคำหรือวลีให้เพื่อนเดาโดยไม่ใช้คำต้องห้าม เกมเน้นความคิดสร้างสรรค์ การสื่อสาร และความสนุกสนาน เหมาะกับทุกเพศทุกวัย',
+5.0, 7.0, 28, 48, 3.9, 57, true, 3, 8, 'Thai', '/images/boardgameCover/6.jpg'),
+
+('โยคี', 'Thai Game Studio', 'Local Publisher', 'Party', 2018,
+'เกมทายท่าทาง ผู้เล่นต้องทำท่าตามการ์ดที่ได้รับ คนอื่นต้องเดาว่าเป็นคำหรือวลีใด เกมเน้นการเคลื่อนไหว ความสนุก และเสียงหัวเราะ',
+55.0, 60.0, 8, 34, 4.0, 4, false, 2, 6, 'Thai', '/images/boardgameCover/7.jpg'),
+
+('Taco Cat Goat Cheese Pizza', 'Dave Campbell', 'Goliath Games', 'Party', 2018,
+'เกมการ์ดเร็วและตลก ผู้เล่นสลับกันวางไพ่และต้องพูดคำตามลำดับ หากไพ่ตรงกับคำที่พูด ผู้เล่นต้องรีบกดไพ่ลงกลาง เกมเน้นความไว ความสนุกสนาน และการหัวเราะเป็นวงกลม',
+16.0, 20.0, 20, 23, 4.1, 14, false, 2, 8, 'English', '/images/boardgameCover/8.jpg'),
+
+('Camel Up', 'Steffen Bogen', 'Pegasus Spiele', 'Strategy', 2014,
+'เกมเดิมพันแข่งอูฐ ผู้เล่นวางเดิมพันบนอูฐที่กำลังแข่งเพื่อชิงรางวัล การแข่งขันเต็มไปด้วยความตื่นเต้นและไม่แน่นอน เกมเน้นโชคและการคาดเดา สามารถเล่นได้ทั้งครอบครัว',
+75.0, 80.0, 6, 57, 4.3, 25, true, 2, 8, 'English', '/images/boardgameCover/9.jpg'),
+
+('Ethnos', 'Peter Dunstan', 'CMON Limited', 'Card Game', 2018,
+'เกมวางกลยุทธ์สะสมเผ่า ผู้เล่นรวบรวมการ์ดเผ่าเพื่อครองดินแดนต่าง ๆ และได้คะแนน เกมเน้นการวางแผน การสร้างชุดการ์ด และการบริหารทรัพยากร',
+69.0, 75.0, 8, 67, 4.2, 12, true, 2, 6, 'English', '/images/boardgameCover/10.jpg'),
+
+('Exploding Kitten Party Pack', 'Elan Lee', 'Exploding Kittens', 'Party', 2016,
+'เกมการ์ดตลกและระเบิด ผู้เล่นต้องหลีกเลี่ยงไพ่ “Exploding Kitten” และใช้ไพ่พิเศษเอาตัวรอด เกมรวดเร็ว เล่นง่าย และเหมาะกับปาร์ตี้หรือครอบครัว',
+93.0, 100.0, 7, 95, 4.0, 44, false, 2, 6, 'English', '/images/boardgameCover/11.jpg'),
+
+('Mogel Motte', 'Uwe Rosenberg', 'Amigo Spiele', 'Cooperative', 2013,
+'เกมบลัฟและจิตวิทยา ผู้เล่นต้องทายและบลัฟเกี่ยวกับจำนวนไพ่แมลง เกมเน้นการอ่านใจ การหลอกล่อ และความสนุกแบบเฮฮา',
+75.0, 80.0, 6, 44, 4.1, 67, true, 2, 4, 'German', '/images/boardgameCover/12.jpg'),
+
+('Deception', 'Takeshi Kikuchi', 'Grey Fox Games', 'Party', 2015,
+'เกมสืบสวนฆาตกรรม ผู้เล่นแบ่งเป็นนักสืบและผู้ร้าย ผู้เล่นต้องตีความหลักฐานและสื่อสารกันเพื่อหาฆาตกร เกมเน้นความคิดวิเคราะห์ การสังเกต และการบลัฟ',
+37.0, 40.0, 8, 17, 4.2, 66, true, 3, 8, 'English', '/images/boardgameCover/13.jpg'),
+
+('Splendor', 'Marc André', 'Space Cowboys', 'Economic', 2014,
+'เกมสะสมอัญมณี ผู้เล่นรวบรวมทรัพยากรเพื่อซื้อการ์ดและสะสมคะแนน เกมเน้นการวางแผน การสร้างชุดคอมโบ และกลยุทธ์ระยะยาว',
+97.0, 100.0, 5, 84, 4.4, 48, true, 2, 4, 'English', '/images/boardgameCover/14.jpg'),
+
+('เกมการ์ดโอฮาน่า', 'Thai Studio', 'Local Publisher', 'Economic', 2019,
+'เกมสร้างเรื่องราวและบลัฟ ผู้เล่นต้องวางการ์ดเพื่อสร้างเรื่องราวหรือกลยุทธ์และเอาชนะคู่ต่อสู้ เกมสนุกและเหมาะกับกลุ่มเพื่อน',
+42.0, 50.0, 6, 63, 4.0, 86, true, 2, 6, 'Thai', '/images/boardgameCover/15.jpg'),
+
+('Dixit', 'Jean-Louis Roubira', 'Libellud', 'Strategy', 2008,
+'เกมตีความภาพ ผู้เล่นเลือกภาพเพื่อสื่อความหมายและให้คนอื่นเดา เกมเน้นความคิดสร้างสรรค์ การตีความ และจินตนาการ',
+33.0, 40.0, 5, 71, 4.5, 57, true, 3, 6, 'French', '/images/boardgameCover/16.jpg'),
+
+('Survive from the Atlantis!', 'Klaus Teuber', 'Kosmos', 'Card Game', 2010,
+'เกมเอาชีวิตรอด ผู้เล่นต้องอพยพจากเกาะแอตแลนติสก่อนที่มันจะจมลง ใช้กลยุทธ์และการวางแผนเพื่อรักษาชีวิต เกมเน้นความตื่นเต้นและความคิดเชิงกลยุทธ์',
+91.0, 100.0, 8, 10, 4.0, 8, true, 2, 6, 'English', '/images/boardgameCover/17.jpg'),
+
+('Avalon', 'Don Eskridge', 'Indie Boards', 'Family', 2012,
+'เกมสังคมบลัฟและสืบสวน ผู้เล่นแบ่งเป็นฝ่ายดีและฝ่ายร้าย ใช้การสังเกต การโต้เถียง และการวิเคราะห์เพื่อเอาชนะ ฝ่ายร้ายต้องซ่อนตัวและฝ่ายดีต้องหาความจริง',
+38.0, 45.0, 6, 32, 4.3, 77, true, 3, 6, 'English', '/images/boardgameCover/18.jpg'),
+
+('Settler of Catan', 'Klaus Teuber', 'Kosmos', 'Strategy', 1995,
+'เกมสร้างอาณาจักรและแลกทรัพยากร ผู้เล่นสร้างถนน หมู่บ้าน และเมืองเพื่อสะสมคะแนน เกมเน้นกลยุทธ์ การเจรจา และการบริหารทรัพยากร',
+68.0, 75.0, 10, 77, 4.6, 58, true, 3, 4, 'English', '/images/boardgameCover/19.jpg'),
+
+('Codenames Pictures', 'Vlaada Chvátil', 'Czech Games Edition', 'Cooperative', 2016,
+'เกมสื่อสารโดยคำใบ้ ผู้เล่นต้องจับคู่ภาพที่สื่อความหมายเดียวกันโดยใช้คำใบ้ของเพื่อนทีมเดียวกัน เกมเน้นความคิดสร้างสรรค์ การสื่อสาร และการวิเคราะห์',
+47.0, 50.0, 6, 84, 4.2, 64, true, 2, 8, 'English', '/images/boardgameCover/20.jpg');
